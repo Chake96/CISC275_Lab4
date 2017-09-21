@@ -1,0 +1,90 @@
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
+import javax.swing.JFrame;
+
+public class OrcView extends JFrame{
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 261713092196640059L;
+	private Orcs[] m_orcs;
+	
+	@Override
+    public void paint(Graphics g) {
+		
+		Orc current_orc = OrcController.getOrcs()[0]; //change later to be more versatile
+		
+		int picNum = 1;
+		int xloc = current_orc.getX_position();
+		int yloc = current_orc.getY_position();
+		int xIncr = current_orc.getX_acceleration();
+		int yIncr = current_orc.getY_acceleration();	
+		
+		
+		
+    	picNum = (picNum + 1) % OrcController.frameCount; //0 : SE , 1 NW, 2 SW, 3 NE, 4 W, 5 E, 6 S, 7 N
+    	
+    	if(xloc <= 0 || xloc > OrcController.getFramewidth() - OrcController.getImgwidth()) { //meet wall -> flip direction
+    		xIncr *= -1;
+    	}
+    	if(yloc < 0 || yloc >  OrcController.getFrameheight() -  OrcController.getImgheight()){ //meet wall -> flip direction
+    		yIncr *= -1;
+    	}
+    	
+    	ArrayList<BufferedImage[]> orc_images = current_orc.getAnimation(); 
+    	BufferedImage[] orc_direction = orc_images.get(5);
+    	//image selection based on direction of acceleration
+    	if(yIncr > 0){
+    		//north
+    		if(xIncr == 0) orc_direction = orc_images.get(7); //north
+    		else if(xIncr > 0) orc_direction = orc_images.get(0); //north east
+    		else orc_direction = orc_images.get(2); //north west
+    	}else{
+    		//south
+    		if(xIncr == 0 && yIncr == 0) orc_direction = orc_images.get(5); //non-moving - East
+    		else if(xIncr > 0) orc_direction = orc_images.get(3); //south-east
+    		else if(xIncr < 0) orc_direction = orc_images.get(1); //south-west
+    		else if(xIncr == 0) orc_direction = orc_images.get(6); //south
+    		else{
+    			if(yIncr == 0 && xIncr > 0) orc_direction = orc_images.get(4);
+    			else orc_direction = orc_images.get(5);
+    		}
+    	}
+    	System.out.println(orc_direction);
+    	
+    	g.drawImage(orc_direction[picNum], xloc+=xIncr, yloc+=yIncr, Color.gray, this);
+    	// TODO: Keep the orc from walking off-screen, turn around when bouncing off walls.
+    	//Be sure that animation picture direction matches what is happening on screen.
+    	
+    }
+	
+	OrcView(Orc[] orcs){
+		
+		
+		
+		
+		OrcController.frame.setBackground(Color.gray);
+		OrcController.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		OrcController.frame.setSize(OrcController.getFramewidth(), OrcController.getFrameheight());
+		OrcController.frame.setVisible(true);
+		
+    	for(int i = 0; i < 1000; i++){
+    		OrcController.frame.repaint();
+    		try {
+    			Thread.sleep(100);
+    		} catch (InterruptedException e) {
+    			e.printStackTrace();
+    		}
+    	}
+	}
+	
+	
+
+}

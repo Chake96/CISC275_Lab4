@@ -1,0 +1,7 @@
+1505700378828	Encapsulate field 'imgWidth'
+1505700383694	Encapsulate field 'imgHeight'
+1505700394325	Encapsulate field 'frameWidth'
+1505700398293	Encapsulate field 'frameHeight'
+1505770775080	Encapsulate field 'm_orcs'
+1505790683011	Rename field 'animation'
+1505792519073	Encapsulate field 'orc_view'

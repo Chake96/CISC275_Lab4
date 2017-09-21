@@ -1,0 +1,107 @@
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
+
+public class Orc {
+	
+	private int x_position;
+	private int y_position;
+	private int x_acceleration;
+	private int y_acceleration;
+	private ArrayList<BufferedImage[]> animation;
+	
+	Orc(){
+		reset();
+	}
+	
+	Orc(int x_pos, int y_pos, int x_acc, int y_acc){
+		this.x_position = x_pos;
+		this.y_position = y_pos;
+		this.x_acceleration = x_acc;
+		this.y_acceleration = y_acc;
+		setPics(null);
+	}
+	
+	public void reset(){
+		x_position = 0;
+		y_position = 0;
+		x_acceleration = 0;
+		y_acceleration = 0;
+		final int frameCount = 10;
+		for(int num_orcs = 7; num_orcs > -1; num_orcs--){
+    		BufferedImage[] pic = new BufferedImage[10];
+
+    		BufferedImage img = createImage(1,num_orcs, num_orcs);
+	    	
+    		for(int i = 0; i < frameCount; i++){
+    				
+	    			pic[i] = img.getSubimage(OrcController.imgWidth*i, 0, OrcController.imgWidth, OrcController.imgHeight);
+	    	}
+    		animation.add(pic);
+    	}
+	}
+	
+	protected BufferedImage createImage(int action, int direct1, int direct2){
+		BufferedImage bufferedImage;
+		try {
+			String[] directions = {"north", "south","east","west"};
+			String[] actions = {"fire", "forward","idle", "jump"};
+			String image_loc;
+			
+			if(direct1 < 4) image_loc = "images/orc/orc_"+ actions[action] + "_"+ directions[direct1].toString() +".png";
+			else if(direct1 > 4 && direct2%4 == 3){
+				image_loc = "images/orc/orc_"+ actions[action] + "_"+ directions[direct1%2].toString() + directions[2].toString() +".png";
+			}else{
+				image_loc = (direct2%4==2) ? "images/orc/orc_"+ actions[action] + "_"+ directions[direct1%2].toString() + directions[3].toString() +".png":  "images/orc/orc_"+ actions[action] + "_"+ directions[direct1%2].toString() + directions[direct1%2+2].toString() + ".png" ;
+			}
+			
+			System.out.println(image_loc);
+			
+			bufferedImage = ImageIO.read(new File(image_loc));
+			return bufferedImage;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+		
+		// TODO: Change this method so you can load other orc animation bitmaps
+	}
+	
+	public int getX_position() {
+		return x_position;
+	}
+	public void setX_position(int x_position) {
+		this.x_position = x_position;
+	}
+	public int getY_position() {
+		return y_position;
+	}
+	public void setY_position(int y_position) {
+		this.y_position = y_position;
+	}
+	public int getX_acceleration() {
+		return x_acceleration;
+	}
+	public void setX_acceleration(int x_acceleration) {
+		this.x_acceleration = x_acceleration;
+	}
+	public int getY_acceleration() {
+		return y_acceleration;
+	}
+	public void setY_acceleration(int y_acceleration) {
+		this.y_acceleration = y_acceleration;
+	}
+
+	public ArrayList<BufferedImage[]> getAnimation() {
+		return animation;
+	}
+
+	public void setAnimation(ArrayList<BufferedImage[]> pics) {
+		this.animation = pics;
+	}	
+}
+
+

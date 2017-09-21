@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;images.orc&apos; to &apos;orc_image&apos;&#x0D;&#x0A;- Original project: &apos;Lab3_Hake&apos;&#x0D;&#x0A;- Original element: &apos;Lab3_Hake/src/images.orc&apos;&#x0D;&#x0A;- Renamed element: &apos;Lab3_Hake/src/orc_image&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;images.orc&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;images.orc" name="orc_image" qualified="false" references="true" stamp="1505792209260" textual="false" version="1.0"/>
+</session>

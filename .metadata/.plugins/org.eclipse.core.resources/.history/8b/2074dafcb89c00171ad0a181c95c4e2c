@@ -1,0 +1,77 @@
+import java.awt.Color;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class OrcController extends JPanel{
+	
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private final static int frameWidth = 500;
+	private final static int frameHeight = 300;
+	private final static int imgWidth = 165;
+	private final static int imgHeight = 165;
+    final static int frameCount = 10;
+    protected static int number_orcs = 7;
+   
+    
+    private static Orc orcs[];
+	private static OrcView orc_view;
+	
+	
+    public static JFrame frame;
+	
+	public OrcController(Orc[] orc_mdl, OrcView orc_vw){
+		OrcController.orcs = orc_mdl;
+		OrcController.orc_view = orc_vw;
+		
+	}
+	
+	public OrcController(){
+		
+		
+		
+		OrcController.orcs = new Orc[number_orcs];
+		OrcController.orc_view = new OrcView();
+		
+	}
+	
+	//Make frame, loop on repaint and wait
+    public static void main(String[] args) {
+    	    	
+    	//figure out how to get image to draw lmao
+    	Orc orcs = new Orc[number_orcs];
+    	
+    	
+    }
+
+	public static Orc[] getOrcs() {
+		return orcs;
+	}
+
+	public void setOrcs(Orc orcs[]) {
+		OrcController.orcs = orcs;
+	}
+
+	public static int getImgwidth() {
+		return imgWidth;
+	}
+
+	public static int getImgheight() {
+		return imgHeight;
+	}
+
+	public static int getFramewidth() {
+		return frameWidth;
+	}
+
+	public static int getFrameheight() {
+		return frameHeight;
+	}
+		
+
+}

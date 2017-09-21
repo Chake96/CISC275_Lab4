@@ -1,0 +1,29 @@
+Notes for class
+
+
+
+Class 5: Design Patterns
+
+MVC - Model View Controller
+	
+	Pluses:
+		Standard
+		Tested
+		Solves common problems
+	
+	Model (Testable) -- state of world
+		Data
+		Loc
+		Vel
+		Dir
+		 
+	View (Testable by Google's huge AI team) -- view of the world
+		where the orc is displayed
+		Draws the orc based on model's (overall) data
+		Where mice, keyboards, buttons, etc are created
+	
+	Controller
+		tick()
+		listeners
+		
+	

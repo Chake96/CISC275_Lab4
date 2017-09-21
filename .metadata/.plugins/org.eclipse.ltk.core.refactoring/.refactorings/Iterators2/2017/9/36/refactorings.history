@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Iterators2/src/MyIter&apos; to &apos;MyIter.java&apos;" description="Rename resource &apos;MyIter&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/MyIter" name="MyIter.java" stamp="1504636590724" updateReferences="true"/>
+</session>

@@ -1,0 +1,41 @@
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+public class BoardTest {
+
+	protected Board easy_board = new Board(1);
+	protected Board medium_board = new Board(2);
+	protected Board hard_board = new Board(3);
+	protected int difficulty;
+	
+	protected void setUp(){
+		easy_board = new Board(1);
+		medium_board = new Board(2);
+		hard_board = new Board(3);
+
+	}
+		
+	@Test
+	public void test_easy() {
+		difficulty = 1;
+		assertEquals(easy_board.)
+		
+	}
+
+	@Test
+	public void test_medium(){
+		
+	}
+	
+	@Test
+	public void test_hard(){
+		
+	}
+	
+	
+}
